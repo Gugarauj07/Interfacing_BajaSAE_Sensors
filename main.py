@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QIcon, QColor
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QGridLayout, QHBoxLayout, QComboBox, \
     QVBoxLayout, QLCDNumber
 import sys
@@ -104,7 +104,7 @@ class MainWindow(QWidget):
         self.labelCVT = QLabel("Temperatura da CVT: ")
         self.labelCVT.setStyleSheet(css)
         self.displayCVT = QLCDNumber()
-        self.displayCVT.setStyleSheet('color: #ffd700; background-color: blue')
+        # self.displayCVT.setStyleSheet('color: #ffd700; background-color: blue')
 
         self.velocimetro = AnalogGaugeWidget()
         self.velocimetro.enableBarGraph = False

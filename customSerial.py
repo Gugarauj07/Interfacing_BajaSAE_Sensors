@@ -28,7 +28,7 @@ class customSerial(QObject):
 
         with open(f"Arquivos_CSV/{self.arquivo}.csv", 'w', newline='') as f:
             self.thewriter = csv.writer(f)
-            self.thewriter.writerow(['velocidade', 'rpm', 'cvt'])
+            self.thewriter.writerow(['cvt', 'velocidade', 'rpm'])
 
         self.baudratesDIC = {
             '9600': 9600,
@@ -49,12 +49,13 @@ class customSerial(QObject):
     def read_serial(self):
         while self.alive.isSet() and self.serialPort.is_open:
 
-            self.data = self.serialPort.readline().decode("utf-8").split()
+            self.data = self.serialPort.readline().decode("utf-8").split(',')
+            print(self.data)
 
-            if len(self.data) > 0:
+            if len(self.data) == 3:
                 with open(f"Arquivos_CSV/{self.arquivo}.csv", 'a+', newline='') as f:
                     self.thewriter = csv.writer(f)
-                    self.thewriter.writerow([self.data[0]])
+                    self.thewriter.writerow([self.data[0], self.data[1], self.data[2]])
 
                 df = pd.read_csv(f"Arquivos_CSV/{self.arquivo}.csv").tail(100)
 
@@ -62,18 +63,19 @@ class customSerial(QObject):
                 self.rpmArray = list(df["rpm"])
                 self.cvtArray = list(df["cvt"])
 
-                self.window.displayVeloc.display(self.data[0])
-                # self.window.displayRPM.display(self.data[1])
-                # self.window.displayCVT.display(self.data[2])
+                self.window.displayVeloc.display(self.data[1])
+                self.window.displayRPM.display(self.data[2])
+                self.window.displayCVT.display(self.data[0])
 
-                self.window.velocimetro.updateValue(float(self.data[0]))
+                self.window.velocimetro.updateValue(float(self.data[1]))
 
                 self.pen = mkPen(width=2)
-                self.window.graphRPM.clear()
-                self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
+                # self.window.graphRPM.clear()
+                # self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
 
                 self.window.graphCVT.clear()
                 self.window.graphCVT.plot(self.cvtArray, pen=self.pen)
+
 
     def start_thread(self):
         self.thread = Thread(target=self.read_serial)
