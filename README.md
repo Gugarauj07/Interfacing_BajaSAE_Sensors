@@ -4,4 +4,5 @@ This project aims on creating a interface with python to visualize the serial da
 - For reading the monitor serial it was used the library "PySerial"
 
 If u have any questions, contact me: gugaraujo01@gmail.com
+
 https://www.instagram.com/bajauea/
