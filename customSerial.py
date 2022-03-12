@@ -70,12 +70,11 @@ class customSerial(QObject):
                 self.window.velocimetro.updateValue(float(self.data[1]))
 
                 self.pen = mkPen(width=2)
-                # self.window.graphRPM.clear()
-                # self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
+                self.window.graphRPM.clear()
+                self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
 
                 self.window.graphCVT.clear()
                 self.window.graphCVT.plot(self.cvtArray, pen=self.pen)
-
 
     def start_thread(self):
         self.thread = Thread(target=self.read_serial)
