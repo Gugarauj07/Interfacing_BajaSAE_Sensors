@@ -63,18 +63,21 @@ class customSerial(QObject):
                 self.rpmArray = list(df["rpm"])
                 self.cvtArray = list(df["cvt"])
 
-                self.window.displayVeloc.display(self.data[1])
-                self.window.displayRPM.display(self.data[2])
-                self.window.displayCVT.display(self.data[0])
+                try:
+                    self.window.displayVeloc.display(self.data[1])
+                    self.window.displayRPM.display(self.data[2])
+                    self.window.displayCVT.display(self.data[0])
 
-                self.window.velocimetro.updateValue(float(self.data[1]))
+                    self.window.velocimetro.updateValue(float(self.data[1]))
 
-                self.pen = mkPen(width=2)
-                self.window.graphRPM.clear()
-                self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
+                    self.pen = mkPen(width=2)
+                    self.window.graphRPM.clear()
+                    self.window.graphRPM.plot(self.rpmArray, pen=self.pen)
 
-                self.window.graphCVT.clear()
-                self.window.graphCVT.plot(self.cvtArray, pen=self.pen)
+                    self.window.graphCVT.clear()
+                    self.window.graphCVT.plot(self.cvtArray, pen=self.pen)
+                except ValueError:
+                    pass
 
     def start_thread(self):
         self.thread = Thread(target=self.read_serial)
