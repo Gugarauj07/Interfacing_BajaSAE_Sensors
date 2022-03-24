@@ -76,7 +76,7 @@ class customSerial(QObject):
 
                     self.window.graphCVT.clear()
                     self.window.graphCVT.plot(self.cvtArray, pen=self.pen)
-                except ValueError:
+                except (ValueError, TypeError):
                     pass
 
     def start_thread(self):
