@@ -3,6 +3,10 @@ This project aims on creating a interface with python to visualize the serial da
 - For interfacing the system it was used the library "PyQt5"
 - For reading the monitor serial it was used the library "PySerial"
 
+![unknown](https://user-images.githubusercontent.com/92393578/160048951-197341aa-64bd-4e65-92c4-2fcbe1a933f1.png)
+
+![unknown](https://user-images.githubusercontent.com/92393578/160048503-02d8c52d-a0ae-4d93-8c59-47c3e992f723.png)
+
 If u have any questions, contact me: gugaraujo01@gmail.com
 
 https://www.instagram.com/bajauea/
