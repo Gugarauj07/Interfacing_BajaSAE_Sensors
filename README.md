@@ -7,6 +7,4 @@ This project aims on creating a interface with python to visualize the serial da
 
 ![unknown](https://user-images.githubusercontent.com/92393578/160048503-02d8c52d-a0ae-4d93-8c59-47c3e992f723.png)
 
-If u have any questions, contact me: gugaraujo01@gmail.com
-
-https://www.instagram.com/bajauea/
+# PS: UPGRADING THIS PROJECT ON THE REP "RacingTelemetry"
